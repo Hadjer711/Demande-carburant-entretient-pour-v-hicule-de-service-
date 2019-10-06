@@ -1,0 +1,189 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Carburant</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="../demande/static/polls/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="{% static 'polls/sb-admin-2.css' %}" rel="stylesheet" type="text/css">
+
+</head>
+
+<body >
+	  <nav class="navbar navbar-expand-lg navbar-light fixed-top py-2" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="{% static 'polls/images/sonatrach_logo.png' %}"  alt="logo" style="width: 55px;
+height: 50px;">
+      </a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+     
+    </div>
+  </nav>
+  
+  
+
+
+  <div class="container ">
+
+    <!-- Outer Row -->
+    <div class="row justify-content-center">
+
+      <div class="col-xl-6 col-lg-8 col-md-5">
+
+        <br> <br> <br>
+        <div class="card o-hidden border-0 shadow-lg my-5">
+          <div class="card-body p-0">
+          	<div class="row">
+          		<div class="col-lg-3">
+          			
+          		</div>
+          		<div class="col-lg-6">
+          			<div class="text-center">
+          				<br>
+                    <h1 class="h4 text-gray-900 mb-4">Demande de carburant</h1>
+                        <h2> {{ object.nomPrenom }}</h2>
+                        <p> {{ object.structure }}</p>
+                  </div>
+          			
+          		</div>
+          		
+                  
+          		
+          	</div>
+            <!-- Nested Row within Card Body -->
+            <div class="container">
+
+             
+              
+                  <form class="user needs-validation" method="POST"> {% csrf_token %}
+                  	<p>Demandeur</p>
+                  	{{ form.as_p }}
+                  			<!--	<div class="form-group">
+                      <input type="name" class="form-control " id="exampleInputname" aria-describedby="emailHelp" placeholder="Nom et prenom" value="{{ form.fields1 }}" required>
+                    </div>
+                   
+                     <div class="form-group">
+                    	<select name="Structure" class="custom-select"  required>
+                    		<option value="" disabled selected>Structure</option>
+                    		<option value="">DG</option>
+                    		<option value="">DP</option>
+                    		<option value="">Essence</option>
+                    	</select>
+                          </div>
+                           <div class="form-group">
+                    	<select name="Compte analytique" class="custom-select"  required>
+                    		<option value="" disabled selected>Compte analytique</option>
+                    		<option value="">Diesel</option>
+                    		<option value="">Hybride</option>
+                    		<option value="">Essence</option>
+                    	</select>
+                          </div>
+                    
+                    <div class="form-group">
+                      <input type="tel" class="form-control " id="exampleInputtelPV" placeholder="Tel privé" required>
+                    </div>
+                    <div class="form-group">
+                      <input type="tel" class="form-control " id="exampleInputtelB" placeholder="Tel bureau" required>
+                    </div>
+
+
+                    <hr>
+                  		 
+                  	<p>Véhicule</p>	 	 	
+                    <div class="form-group">
+                    	<select name="Type Carburant" class="custom-select" placeholder="Type Carburant" required>
+                    		<option value="" disabled selected>Type Carburant</option>
+                    		<option value="Diesel">Diesel</option>
+                    		<option value="Hybride">Hybride</option>
+                    		<option value="Essence">Essence</option>
+                    	</select>
+                          </div>
+                          <p>Moyen d'alimentation</p>
+
+
+                  		  <div class="form-group">
+                      <div class="custom-control-inline custom-radio small">
+                        <input type="radio" class="custom-control-input" id="customradio" value="Carnet">
+                        <label class="custom-control-label" for="customradio">Carnet</label>
+                      </div>
+                      <div class=" custom-control-inline custom-radio small ">
+                       
+                        <input type="radio" class="custom-control-input" id="customradio2" value="TPE">
+                        <label class="custom-control-label" for="customradio2">TPE</label>
+                      </div>
+                    </div> <!-->
+                    <button href="#" type="submit"  class="btn btn-primary btn-user btn-block">
+                      Envoyer La demande
+                    </button>
+                     
+                  	
+                   
+                  	
+                    
+                    
+                   
+                  </form>
+                  <hr>
+                 
+                  
+               
+            </div>
+         
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+      <!-- Bootstrap core JavaScript-->
+  <script src="../demande/static/polls/vendor/jquery/jquery.min.js"></script>
+  <script src="../demande/static/polls/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="../demande/static/polls/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="../demande/static/polls/js/sb-admin-2.min.js"></script>
+  <script>
+// Disable form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Get the forms we want to add validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+</script>
+
+
+
+</body>
+
+</html>
