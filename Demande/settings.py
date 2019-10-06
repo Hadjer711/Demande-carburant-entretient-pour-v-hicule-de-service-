@@ -115,15 +115,14 @@ USE_L10N = True
 
 USE_TZ = True
 
-LOGIN_URL= '/'
-LOGOUT_REDIRECT_URL = '/'
+LOGIN_URL='/'
+LOGIN_REDIRECT_URL ='welcome_admin/'
+
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT= ''
-STATICFILES_DIRS = [
 
-    os.path.join(BASE_DIR, 'static'),
-]
+

@@ -14,25 +14,27 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+
 from django.urls import path, include
-from django.views.generic.base import TemplateView
+from django.contrib.auth import views as auth_views
 from demande.views import  carburant_affiche, carburant_save,entretient_save ,entretient_affiche, welcome,\
-    error404, forgot_psw, login_view, welcome_admin, rapport_mensuel
+    error404, forgot_psw , welcome_admin, rapport_mensuel
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-path('client/', welcome),
+    path('client/', welcome),
     path('client/carburant/', carburant_save),
     path('client/entretient/', entretient_save),
     path('carburant-affiche/', carburant_affiche),
-path('entretient-affiche/', entretient_affiche),
-path('error404/', error404),
+    path('entretient-affiche/', entretient_affiche),
+    path('error404/', error404),
     path('forgot_psw/', forgot_psw),
-    path('login/', login_view),
-    path('welcom_admin/', welcome_admin),
-path('rapport/', rapport_mensuel),
 
-path('accounts/', include('django.contrib.auth.urls')),
-    path('', TemplateView.as_view(template_name='index.html'), name='home'),
+    path('login/welcome_admin/', welcome_admin),
+    path('rapport/', rapport_mensuel),
+    path('login/', auth_views.LoginView.as_view(), name='login'),
+    path('logout/', auth_views.LoginView.as_view() , name='logout'),
+
+
 
 ]
