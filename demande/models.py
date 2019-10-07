@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 class Carburant(models.Model):
     compteAnalytiqueChoice=[
@@ -37,13 +38,13 @@ class Carburant(models.Model):
     ]
     alimentationChoice=[('TPE','TPE'), ('Carnet', 'Carnet')]
     typeCarburantChoice=[('Diesel','Diesel'), ('Essence','Essence'), ('Super','Super')]
-    nomPrenom = models.CharField(max_length=100)
-    structure= models.CharField(max_length=100)
-    compteAnalytique = models.CharField(max_length=10, choices=compteAnalytiqueChoice)
-    telephonePv= models.CharField(max_length=100)
-    telephoneBr = models.CharField(max_length=100)
-    typeCarburant = models.CharField(max_length=30, choices=typeCarburantChoice)
-    alimentation = models.CharField(max_length=20, choices=alimentationChoice)
+    nomPrenom = models.CharField(max_length=100, verbose_name='')
+    structure = models.CharField(max_length=100, verbose_name='')
+    compteAnalytique = models.CharField(max_length=10, choices=compteAnalytiqueChoice, verbose_name='Compte Analytique')
+    telephonePv = models.CharField(max_length=100, verbose_name='')
+    telephoneBr = models.CharField(max_length=100, verbose_name='')
+    typeCarburant = models.CharField(max_length=30, choices=typeCarburantChoice, verbose_name='Type Carburant')
+    alimentation = models.CharField(max_length=20, choices=alimentationChoice, verbose_name='Alimentation')
 
 
 

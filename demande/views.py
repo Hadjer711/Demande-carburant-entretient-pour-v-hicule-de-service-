@@ -1,16 +1,14 @@
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.admin.views.decorators import staff_member_required
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.views import logout_then_login
 from django.shortcuts import render
+
 from .forms import CarburantForm, EntretientForm
 from .models import Carburant, Entretient
+
+
 # Create your views here.
 
-def carburant_create(request):
-    obj=Carburant.objects.get(id=1)
-    template_name='carburant.html'
-    context={"object":obj}
-    return render(request,template_name,context)
 
 def welcome(request):
     template_name='client.html'
@@ -94,3 +92,7 @@ def logout_view(request):
     logout(request)
     template_name='login.html'
     return render(request, template_name)
+
+
+def logoutTlogin(request):
+    return logout_then_login(request, login_url='/login')

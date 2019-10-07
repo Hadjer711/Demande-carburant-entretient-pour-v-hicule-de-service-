@@ -1,5 +1,6 @@
 
 {% load static %}
+{% load crispy_forms_tags %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -73,7 +74,7 @@ height: 50px;">
               
                   <form class="user needs-validation" method="POST"> {% csrf_token %}
                   	<p>Demandeur</p>
-                  	{{ form.as_p }}
+                      {{ form | crispy }}
                   			<!--	<div class="form-group">
                       <input type="name" class="form-control " id="exampleInputname" aria-describedby="emailHelp" placeholder="Nom et prenom" value="{{ form.fields1 }}" required>
                     </div>

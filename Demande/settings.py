@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'demande.apps.DemandeConfig',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -125,4 +126,4 @@ LOGIN_REDIRECT_URL ='welcome_admin/'
 
 STATIC_URL = '/static/'
 
-
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

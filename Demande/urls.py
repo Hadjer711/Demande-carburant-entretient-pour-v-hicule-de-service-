@@ -14,26 +14,30 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-
-from django.urls import path, include
 from django.contrib.auth import views as auth_views
-from demande.views import  carburant_affiche, carburant_save,entretient_save ,entretient_affiche, welcome,\
-    error404, forgot_psw , welcome_admin, rapport_mensuel
+from django.shortcuts import redirect
+from django.urls import path
+
+from demande.views import carburant_affiche, carburant_save, entretient_save, entretient_affiche, welcome, \
+    error404, forgot_psw, welcome_admin, rapport_mensuel, logoutTlogin
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('client/', welcome),
     path('client/carburant/', carburant_save),
     path('client/entretient/', entretient_save),
-    path('carburant-affiche/', carburant_affiche),
-    path('entretient-affiche/', entretient_affiche),
+    path('carburants/', carburant_affiche, name='carburants'),
+    path('entretients/', entretient_affiche, name='entretients'),
     path('error404/', error404),
     path('forgot_psw/', forgot_psw),
 
-    path('login/welcome_admin/', welcome_admin),
-    path('rapport/', rapport_mensuel),
+    path('account/', welcome_admin, name='home'),
+    path('rapport/', rapport_mensuel, name='rapport'),
     path('login/', auth_views.LoginView.as_view(), name='login'),
-    path('logout/', auth_views.LoginView.as_view() , name='logout'),
+    path('logout/', logoutTlogin, name='logout'),
+    path('account/logout/', lambda request: redirect('logout', permanent=False)),
+    path('login/welcome_admin/', lambda request: redirect('home', permanent=False)),
+
 
 
 
