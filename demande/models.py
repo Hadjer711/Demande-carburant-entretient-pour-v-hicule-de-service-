@@ -38,11 +38,11 @@ class Carburant(models.Model):
     ]
     alimentationChoice=[('TPE','TPE'), ('Carnet', 'Carnet')]
     typeCarburantChoice=[('Diesel','Diesel'), ('Essence','Essence'), ('Super','Super')]
-    nomPrenom = models.CharField(max_length=100, verbose_name='')
-    structure = models.CharField(max_length=100, verbose_name='')
+    nomPrenom = models.CharField(max_length=100, verbose_name='Nom Prénom')
+    structure = models.CharField(max_length=100, verbose_name='Structure')
     compteAnalytique = models.CharField(max_length=10, choices=compteAnalytiqueChoice, verbose_name='Compte Analytique')
-    telephonePv = models.CharField(max_length=100, verbose_name='')
-    telephoneBr = models.CharField(max_length=100, verbose_name='')
+    telephonePv = models.CharField(max_length=100, verbose_name='Téléphone privé')
+    telephoneBr = models.CharField(max_length=100, verbose_name='Téléphone de bureau')
     typeCarburant = models.CharField(max_length=30, choices=typeCarburantChoice, verbose_name='Type Carburant')
     alimentation = models.CharField(max_length=20, choices=alimentationChoice, verbose_name='Alimentation')
 

@@ -36,6 +36,9 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(), name='login'),
     path('logout/', logoutTlogin, name='logout'),
     path('account/logout/', lambda request: redirect('logout', permanent=False)),
+    path('rapport/logout/', lambda request: redirect('logout', permanent=False)),
+    path('carburants/logout/', lambda request: redirect('logout', permanent=False)),
+    path('entretients/logout/', lambda request: redirect('logout', permanent=False)),
     path('login/welcome_admin/', lambda request: redirect('home', permanent=False)),
 
 
