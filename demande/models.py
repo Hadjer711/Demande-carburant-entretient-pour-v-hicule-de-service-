@@ -62,3 +62,8 @@ class Entretient(models.Model):
     urgence=models.CharField(max_length=100)
 
 
+
+
+
+
+
