@@ -2,10 +2,23 @@
    {% extends 'base.html' %}
    {% include static %}
              {% block content %}
-
-          <!-- Page Heading -->
+           <div class="row">
+           <div class="col-md-8">
+               <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800">Les demande d'entretients</h1>
           <p class="mb-4">Description....</p>
+
+           </div>
+           <div class="col-md-4">
+              <br>
+              <a href="{% url 'etraite' %} ">
+               <button class="btn btn-primary" type="button"  >Les demandes Traitées</button>
+            </a>
+
+          </div>
+           </div>
+
+
 
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
@@ -28,7 +41,9 @@
                       <th>Tel Bureau</th>
                       <th>Description du besoin</th>
                       <th>Urgence</th>
+
                        <th>Traitement</th>
+
                      
                     </tr>
                   </thead>
@@ -45,7 +60,9 @@
                       <th>Tel Bureau</th>
                       <th>Description du besoin</th>
                       <th>Urgence</th>
+
                       <th>Traitement</th>
+
                     </tr>
                   </tfoot>
                   <tbody>
@@ -66,11 +83,13 @@
                       <th>{{ item.telephoneBr }}</th>
                       <th>{{ item.description }}</th>
                       <th>{{ item.urgence }}</th>
+        {% if item.traite == False %}
         <th>
             <a href="#">
-               <button class="btn btn-secondary" type="button" value="{{ item.id }}" >Traitement</button>
+               <button class="btn btn-secondary" type="button" value="{{ item.id }} " onclick="{{ item.traitement }}" >Traitement</button>
             </a>
         </th>
+        {% endif %}
     </tr>
     {% endfor %}
 

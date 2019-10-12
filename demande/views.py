@@ -17,7 +17,12 @@ def welcome(request):
 @login_required
 def welcome_admin(request):
     template_name='index.html'
-    return render(request , template_name )
+    nb_carb=Carburant.objects.all().filter(traite=False).count()
+    nb_carbt=Carburant.objects.all().filter(traite=True).count()
+    nb_entr=Entretient.objects.all().filter(traite=False).count()
+    nb_entrt=Entretient.objects.all().filter(traite=True).count()
+    context = {'nb_carb': nb_carb, 'nb_carbt': nb_carbt, 'nb_entr': nb_entr, 'nb_entrt':nb_entrt}
+    return render(request , template_name, context )
 
 def login(request):
     template_name='login.html'
@@ -44,8 +49,22 @@ def carburant_affiche(request):
     return render(request , template_name ,context)
 
 @login_required
+def carburant_traffiche(request):
+    query_results=Carburant.objects.all().filter(traite=True)
+    template_name='tables2.html'
+    context={"query_results":query_results}
+    return render(request , template_name ,context)
+
+@login_required
 def entretient_affiche(request):
     query_results=Entretient.objects.all().filter(traite=False)
+    template_name='tables.html'
+    context={"query_results":query_results}
+    return render(request , template_name ,context)
+
+@login_required
+def entretient_traffiche(request):
+    query_results=Entretient.objects.all().filter(traite=True)
     template_name='tables.html'
     context={"query_results":query_results}
     return render(request , template_name ,context)

@@ -22,6 +22,9 @@ class EntretientForm(ModelForm):
     class Meta:
         model = Entretient
         exclude = ['traite', 'id']
+        widgets={
+            'urgence': RadioSelect,
+        }
 
 
 class CarburantTraitement(ModelForm):

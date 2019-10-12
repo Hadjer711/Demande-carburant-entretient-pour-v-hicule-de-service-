@@ -20,11 +20,11 @@ from django.urls import path, re_path
 
 
 from demande.views import carburant_affiche, carburant_save, entretient_save, entretient_affiche, welcome, \
-    error404, forgot_psw, welcome_admin, rapport_mensuel, logoutTlogin, carburant_traitement
+    error404, forgot_psw, welcome_admin, rapport_mensuel, logoutTlogin, carburant_traitement, carburant_traffiche, entretient_traffiche
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('client/', welcome),
+    path('client/', welcome, name='client'),
     path('client/carburant/', carburant_save),
     path('client/entretient/', entretient_save),
     path('carburants/', carburant_affiche, name='carburants'),
@@ -40,8 +40,14 @@ urlpatterns = [
     path('rapport/logout/', lambda request: redirect('logout', permanent=False)),
     path('carburants/logout/', lambda request: redirect('logout', permanent=False)),
     path('entretients/logout/', lambda request: redirect('logout', permanent=False)),
+path('carburants/traite/logout/', lambda request: redirect('logout', permanent=False)),
+    path('entretients/traite/logout/', lambda request: redirect('logout', permanent=False)),
+path('carburants/traitement/logout/', lambda request: redirect('logout', permanent=False)),
+    path('entretients/traitement/logout/', lambda request: redirect('logout', permanent=False)),
     path('login/welcome_admin/', lambda request: redirect('home', permanent=False)),
     path('carburants/traitement/<int:id>', carburant_traitement, name='traiter-carburant'),
+    path('carburants/traite/', carburant_traffiche, name='ctraite'),
+path('entretients/traite/', entretient_traffiche, name='etraite'),
 
 
 

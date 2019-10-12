@@ -6,26 +6,38 @@
 
     <div class="row">
     <div class="col-md-6">
-     <form class="user needs-validation" method="POST"> {% csrf_token %}
+     <form class="user needs-validation" method="POST" > {% csrf_token %}
 
                       {{ form | crispy }}
 
 
-                    <button href="#" type="submit" class="btn btn-primary btn-user btn-block">
+                    <button href="#" type="submit" class="btn btn-primary btn-user btn-block" style="width: 50%; margin: 0 auto;
+    display: block;">
                       Traité
                     </button>
+                    <br>
 
                   </form>
 
     </div>
+
     <div class="col-md-6">
      <div class="card o-hidden border-0 shadow-lg my-5">
           <div class="card-body p-0">
-              <p>{{ result.nomPrenom }}</p>
-              <p>{{ result.structure }}</p>
+              <h4 class="m-0 font-weight-bold text-primary" style="text-align: center">Information sur la demande de Carburant num {{ result.id }}</h4>
+              <br>
+              <p> <strong>Nom et prénom du demandeur :</strong> {{ result.nomPrenom }}</p>
+              <p> <strong>Structure : </strong>{{ result.structure }}</p>
+              <p> <strong>Compte Analytique : </strong> {{ result.compteAnalytique }}</p>
+              <p> <strong>Télephone Privé : </strong>{{ result.telephonePv }}</p>
+              <p><strong> Télephone de Bureau : </strong> {{ result.telephoneBr }}</p>
+              <p> <strong>Type de Carburant : </strong> {{ result.typeCarburant }}</p>
+              <p><strong> Alimentation : </strong>{{ result.alimentation }}</p>
           </div>
      </div>
 
     </div>
+
+
     </div>
 {% endblock %}
