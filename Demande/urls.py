@@ -16,10 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.shortcuts import redirect
-from django.urls import path
+from django.urls import path, re_path
+
 
 from demande.views import carburant_affiche, carburant_save, entretient_save, entretient_affiche, welcome, \
-    error404, forgot_psw, welcome_admin, rapport_mensuel, logoutTlogin
+    error404, forgot_psw, welcome_admin, rapport_mensuel, logoutTlogin, carburant_traitement
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -40,6 +41,7 @@ urlpatterns = [
     path('carburants/logout/', lambda request: redirect('logout', permanent=False)),
     path('entretients/logout/', lambda request: redirect('logout', permanent=False)),
     path('login/welcome_admin/', lambda request: redirect('home', permanent=False)),
+    path('carburants/traitement/<int:id>', carburant_traitement, name='traiter-carburant'),
 
 
 

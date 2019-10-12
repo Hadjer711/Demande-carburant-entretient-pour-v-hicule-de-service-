@@ -45,6 +45,11 @@ class Carburant(models.Model):
     telephoneBr = models.CharField(max_length=100, verbose_name='Téléphone de bureau')
     typeCarburant = models.CharField(max_length=30, choices=typeCarburantChoice, verbose_name='Type Carburant')
     alimentation = models.CharField(max_length=20, choices=alimentationChoice, verbose_name='Alimentation')
+    traite=models.BooleanField(default=False)
+
+    def get_detail_url (self):
+        return f"traitement/{self.id}"
+
 
 
 
@@ -52,7 +57,7 @@ class Entretient(models.Model):
     nomPrenom= models.CharField(max_length=120)
     service= models.CharField(max_length=120)
     immatriculation = models.CharField(max_length=200)
-    kilometrage= models.CharField(max_length=10)
+    kilometrage= models.FloatField()
     marque = models.CharField(max_length=5)
     type = models.CharField(max_length=100)
     contactName = models.CharField(max_length=100)
@@ -60,6 +65,21 @@ class Entretient(models.Model):
     telephoneBr = models.CharField(max_length=100)
     description=models.TextField(blank=True)
     urgence=models.CharField(max_length=100)
+    traite = models.BooleanField(default=False)
+    id = models.AutoField(primary_key=True)
+
+
+class TraitementCarburant(models.Model):
+    kilometrageInitial=models.FloatField(verbose_name="Kilométrage Initial")
+    kilometrageActuel = models.FloatField(verbose_name="Kilometrage Actuel")
+
+    kilometrageParcouru = models.FloatField( verbose_name="Kilometrage Parcouru")
+    quantiteConsommee = models.FloatField(verbose_name="Quantité Consommée")
+    tauxConsomation = models.FloatField( verbose_name="Taux De Consomation")
+    montantAlimentation = models.FloatField(max_length=100, verbose_name="Montant Alimentation")
+    dateAlimentation = models.DateField( verbose_name="Date Alimentation")
+    nouveauKilometrage = models.FloatField(max_length=100, verbose_name="Nouveaux Kilométrage")
+
 
 
 

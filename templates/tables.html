@@ -1,5 +1,6 @@
 
    {% extends 'base.html' %}
+   {% include static %}
              {% block content %}
 
           <!-- Page Heading -->
@@ -66,7 +67,9 @@
                       <th>{{ item.description }}</th>
                       <th>{{ item.urgence }}</th>
         <th>
-            <button class="btn btn-secondary" type="button">Traitement</button>
+            <a href="#">
+               <button class="btn btn-secondary" type="button" value="{{ item.id }}" >Traitement</button>
+            </a>
         </th>
     </tr>
     {% endfor %}

@@ -3,8 +3,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import logout_then_login
 from django.shortcuts import render
 
-from .forms import CarburantForm, EntretientForm
-from .models import Carburant, Entretient
+from .forms import CarburantForm, EntretientForm, CarburantTraitement
+from .models import Carburant, Entretient, TraitementCarburant
 
 
 # Create your views here.
@@ -38,17 +38,32 @@ def error404(request):
 
 @login_required
 def carburant_affiche(request):
-    query_results=Carburant.objects.all()
+    query_results=Carburant.objects.all().filter(traite=False)
     template_name='tables2.html'
     context={"query_results":query_results}
     return render(request , template_name ,context)
 
 @login_required
 def entretient_affiche(request):
-    query_results=Entretient.objects.all()
+    query_results=Entretient.objects.all().filter(traite=False)
     template_name='tables.html'
     context={"query_results":query_results}
     return render(request , template_name ,context)
+
+@login_required
+def carburant_traitement(request, id):
+    form = CarburantTraitement(request.POST or None)
+    result= Carburant.objects.get(id=id)
+    if form.is_valid():
+        obj = TraitementCarburant.objects.create(**form.cleaned_data)
+        obj.save()
+        form = CarburantTraitement()
+        #print('data valid')
+    else:
+        print('data is not valid')
+    context = {'form': form, 'result':result}
+    template_name = 'traitement-Carburant.html'
+    return render(request, template_name, context)
 
 def carburant_save(request):
      form = CarburantForm(request.POST or None)

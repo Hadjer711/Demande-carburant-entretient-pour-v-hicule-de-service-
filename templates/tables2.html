@@ -59,7 +59,9 @@
         <td>{{ item.typeCarburant }}</td>
         <td>{{ item.alimentation }}</td>
         <td>
-    <button class="btn btn-secondary" type="button">Traitement</button>
+    <a href="{{ item.get_detail_url }}  ">
+               <button class="btn btn-secondary" type="button" value="{{ item.id }}" >Traitement</button>
+            </a>
         </td>
     </tr>
     {% endfor %}
